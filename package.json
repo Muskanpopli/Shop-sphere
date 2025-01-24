@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "eCommerce web application built with MERN Stack.",
   "type": "module",
-  "main": "server.js",
+  "main": "backend/server.js",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
@@ -13,7 +13,7 @@
     "data:destroy": "node backend/seeder.js -d",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Ajay Boro",
+  "author": "",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
