@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import compression from 'compression';
 import 'dotenv/config';
-
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -13,6 +12,7 @@ import paymentRoutes from './routes/paymentRoutes.js';
 
 import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+// import favicon from "serve-favicon";
 
 const port = process.env.PORT || 5000;
 
@@ -28,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const __dirname = path.resolve(); // Set {__dirname} to current working directory
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/v1/products', productRoutes);

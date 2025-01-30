@@ -1,16 +1,17 @@
 import User from '../models/userModel.js';
 import jwt from 'jsonwebtoken';
 
-// Middleware to protect routes by verifying JWT authentication token.
 const protect = async (req, res, next) => {
   try {
-    const token = req.cookies.jwt;
+    console.log('Cookies:', req.cookies);
+    const token = req.cookies?.jwt;
 
     if (!token) {
       res.statusCode = 401;
       throw new Error('Authentication failed: Token not provided.');
     }
-
+      // Log the token before verification
+      console.log('Token:', token);
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!decodedToken) {
@@ -19,6 +20,7 @@ const protect = async (req, res, next) => {
     }
 
     req.user = await User.findById(decodedToken.userId).select('-password');
+    console.log('Authenticated User:', req.user);
 
     next();
   } catch (error) {
